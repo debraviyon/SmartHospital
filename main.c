@@ -26,6 +26,9 @@ int main()
     struct Patient patients[MAX_PATIENTS];
     int patientCount = 0;
 
+    struct Doctor doctors[MAX_PATIENTS];
+    int doctorCount = 0;
+
     while (1) {
 
     printf("====================================\n");
@@ -116,6 +119,9 @@ int main()
     printf("Enter Specialization: ");
     scanf(" %[^\n]", doctor.specialization);
 
+    doctors[doctorCount] = doctor;
+    doctorCount++;
+
     printf("\nDoctor added successfully!\n");
     printf("Doctor ID: %d\n", doctor.id);
     printf("Doctor Name: %s\n", doctor.name);
@@ -123,8 +129,15 @@ int main()
 }
 
     else if (doctorChoice == 2) {
-        printf("\nView Doctors selected.\n");
+    printf("\n--- VIEW DOCTORS ---\n");
+
+    for (int i = 0; i < doctorCount; i++) {
+        printf("\nDoctor %d\n", i + 1);
+        printf("Doctor ID: %d\n", doctors[i].id);
+        printf("Doctor Name: %s\n", doctors[i].name);
+        printf("Specialization: %s\n", doctors[i].specialization);
     }
+}
     else if (doctorChoice == 3) {
         printf("\nReturning to Main Menu.\n");
     }
