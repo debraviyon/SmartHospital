@@ -6,6 +6,12 @@ struct Patient {
     int age;
 };
 
+struct Doctor {
+    int id;
+    char name[50];
+    char specialization[50];
+};
+
 int main()
 {
     printf("====================================\n");
@@ -73,26 +79,25 @@ int main()
     scanf("%d", &doctorChoice);
 
     if (doctorChoice == 1) {
-    int doctorID;
-    char doctorName[50];
-    char specialization[50];
+    struct Doctor doctor;
 
     printf("\n--- ADD DOCTOR ---\n");
 
     printf("Enter Doctor ID: ");
-    scanf("%d", &doctorID);
+    scanf("%d", &doctor.id);
 
     printf("Enter Doctor Name: ");
-    scanf(" %[^\n]", doctorName);
+    scanf(" %[^\n]", doctor.name);
 
     printf("Enter Specialization: ");
-    scanf(" %[^\n]", specialization);
+    scanf(" %[^\n]", doctor.specialization);
 
     printf("\nDoctor added successfully!\n");
-    printf("Doctor ID: %d\n", doctorID);
-    printf("Doctor Name: %s\n", doctorName);
-    printf("Specialization: %s\n", specialization);
+    printf("Doctor ID: %d\n", doctor.id);
+    printf("Doctor Name: %s\n", doctor.name);
+    printf("Specialization: %s\n", doctor.specialization);
 }
+
     else if (doctorChoice == 2) {
         printf("\nView Doctors selected.\n");
     }
