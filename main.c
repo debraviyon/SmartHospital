@@ -6,6 +6,8 @@ struct Patient {
     int age;
 };
 
+#define MAX_PATIENTS 100
+
 struct Doctor {
     int id;
     char name[50];
@@ -21,6 +23,11 @@ struct Appointment {
 
 int main()
 {
+    struct Patient patients[MAX_PATIENTS];
+    int patientCount = 0;
+
+    while (1) {
+
     printf("====================================\n");
     printf("        SMART HOSPITAL SYSTEM        \n");
     printf("====================================\n");
@@ -59,14 +66,24 @@ int main()
     printf("Enter Patient Age: ");
     scanf("%d", &patient.age);
 
+    patients[patientCount] = patient;
+    patientCount++;
+
     printf("\nPatient added successfully!\n");
     printf("Patient ID: %d\n", patient.id);
     printf("Patient Name: %s\n", patient.name);
     printf("Patient Age: %d\n", patient.age);
 }
     else if (patientChoice == 2) {
-        printf("\nView Patients selected.\n");
+    printf("\n--- VIEW PATIENTS ---\n");
+
+    for (int i = 0; i < patientCount; i++) {
+        printf("\nPatient %d\n", i + 1);
+        printf("Patient ID: %d\n", patients[i].id);
+        printf("Patient Name: %s\n", patients[i].name);
+        printf("Patient Age: %d\n", patients[i].age);
     }
+}
     else if (patientChoice == 3) {
         printf("\nReturning to Main Menu.\n");
     }
@@ -166,8 +183,10 @@ int main()
         break;
 
     default:
-        printf("\nInvalid choice!\n");
+    printf("\nInvalid choice!\n");
 }
 
-    return 0;
+}
+
+return 0;
 }
