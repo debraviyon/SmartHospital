@@ -12,6 +12,13 @@ struct Doctor {
     char specialization[50];
 };
 
+struct Appointment {
+    int patientID;
+    int doctorID;
+    char date[20];
+    char time[20];
+};
+
 int main()
 {
     printf("====================================\n");
@@ -120,34 +127,31 @@ int main()
     scanf("%d", &appointmentChoice);
 
     if (appointmentChoice == 1) {
-    int patientID;
-    int doctorID;
-    char date[20];
-    char time[20];
+    struct Appointment appointment;
 
     printf("\n--- BOOK APPOINTMENT ---\n");
 
     printf("Enter Patient ID: ");
-    scanf("%d", &patientID);
+    scanf("%d", &appointment.patientID);
 
     printf("Enter Doctor ID: ");
-    scanf("%d", &doctorID);
+    scanf("%d", &appointment.doctorID);
 
     printf("Enter Date: ");
-    scanf("%s", date);
+    scanf("%s", appointment.date);
 
     printf("Enter Time: ");
-    scanf("%s", time);
+    scanf("%s", appointment.time);
 
     printf("\nAppointment booked successfully!\n");
-    printf("Patient ID: %d\n", patientID);
-    printf("Doctor ID: %d\n", doctorID);
-    printf("Date: %s\n", date);
-    printf("Time: %s\n", time);
+    printf("Patient ID: %d\n", appointment.patientID);
+    printf("Doctor ID: %d\n", appointment.doctorID);
+    printf("Date: %s\n", appointment.date);
+    printf("Time: %s\n", appointment.time);
 }
-    else if (patientChoice == 2) {
-    printf("\n--- VIEW PATIENTS ---\n");
-    printf("Patient records will be displayed here.\n");
+    else if (appointmentChoice == 2) {
+    printf("\n--- VIEW APPOINTMENTS ---\n");
+    printf("Appointment records will be displayed here.\n");
 }
     else if (appointmentChoice == 3) {
         printf("\nReturning to Main Menu.\n");
