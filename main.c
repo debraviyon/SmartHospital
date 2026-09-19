@@ -52,7 +52,8 @@ int main()
     printf("\n--- PATIENT MANAGEMENT ---\n");
     printf("1. Add Patient\n");
     printf("2. View Patients\n");
-    printf("3. Back to Main Menu\n");
+    printf("3. Search Patient\n");
+    printf("4. Back to Main Menu\n");
 
     printf("\nEnter your choice: ");
     int patientChoice;
@@ -103,7 +104,31 @@ int main()
         printf("Patient Age: %d\n", patients[i].age);
     }
 }
+
     else if (patientChoice == 3) {
+    int searchID;
+    int found = 0;
+
+    printf("\n--- SEARCH PATIENT ---\n");
+    printf("Enter Patient ID: ");
+    scanf("%d", &searchID);
+
+    for (int i = 0; i < patientCount; i++) {
+        if (patients[i].id == searchID) {
+            printf("\nPatient found!\n");
+            printf("Patient ID: %d\n", patients[i].id);
+            printf("Patient Name: %s\n", patients[i].name);
+            printf("Patient Age: %d\n", patients[i].age);
+            found = 1;
+            break;
+        }
+    }
+
+    if (found == 0) {
+        printf("\nPatient not found!\n");
+    }
+}
+    else if (patientChoice == 4) {
         printf("\nReturning to Main Menu.\n");
     }
     else {
