@@ -140,7 +140,8 @@ int main()
     printf("\n--- DOCTOR MANAGEMENT ---\n");
     printf("1. Add Doctor\n");
     printf("2. View Doctors\n");
-    printf("3. Back to Main Menu\n");
+    printf("3. Search Doctor\n");
+    printf("4. Back to Main Menu\n");
 
     printf("\nEnter your choice: ");
     int doctorChoice;
@@ -192,7 +193,42 @@ int main()
         printf("Specialization: %s\n", doctors[i].specialization);
     }
 }
+
+    else if (doctorChoice == 2) {
+    printf("\n--- VIEW DOCTORS ---\n");
+
+    for (int i = 0; i < doctorCount; i++) {
+        printf("\nDoctor %d\n", i + 1);
+        printf("Doctor ID: %d\n", doctors[i].id);
+        printf("Doctor Name: %s\n", doctors[i].name);
+        printf("Specialization: %s\n", doctors[i].specialization);
+    }
+}
+
     else if (doctorChoice == 3) {
+    int searchID;
+    int found = 0;
+
+    printf("\n--- SEARCH DOCTOR ---\n");
+    printf("Enter Doctor ID: ");
+    scanf("%d", &searchID);
+
+    for (int i = 0; i < doctorCount; i++) {
+        if (doctors[i].id == searchID) {
+            printf("\nDoctor found!\n");
+            printf("Doctor ID: %d\n", doctors[i].id);
+            printf("Doctor Name: %s\n", doctors[i].name);
+            printf("Specialization: %s\n", doctors[i].specialization);
+            found = 1;
+            break;
+        }
+    }
+
+    if (found == 0) {
+        printf("\nDoctor not found!\n");
+    }
+}
+    else if (doctorChoice == 4) {
         printf("\nReturning to Main Menu.\n");
     }
     else {
