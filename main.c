@@ -123,11 +123,23 @@ int main()
 
     if (doctorChoice == 1) {
     struct Doctor doctor;
+    int idExists = 0;
 
     printf("\n--- ADD DOCTOR ---\n");
 
     printf("Enter Doctor ID: ");
     scanf("%d", &doctor.id);
+
+    for (int i = 0; i < doctorCount; i++) {
+      if (doctors[i].id == doctor.id) {
+        idExists = 1;
+        break;
+      }
+    }
+   if (idExists == 1) {
+     printf("\nDoctor ID already exists!\n");
+   }
+   else {
 
     printf("Enter Doctor Name: ");
     scanf(" %[^\n]", doctor.name);
@@ -142,6 +154,7 @@ int main()
     printf("Doctor ID: %d\n", doctor.id);
     printf("Doctor Name: %s\n", doctor.name);
     printf("Specialization: %s\n", doctor.specialization);
+   }
 }
 
     else if (doctorChoice == 2) {
