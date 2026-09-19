@@ -257,6 +257,30 @@ int main()
     printf("Enter Doctor ID: ");
     scanf("%d", &appointment.doctorID);
 
+    int patientFound = 0;
+    int doctorFound = 0;
+
+    for (int i = 0; i < patientCount; i++) {
+      if (patients[i].id == appointment.patientID) {
+        patientFound = 1;
+        break;
+      }
+   }
+
+   for (int i = 0; i < doctorCount; i++) {
+      if (doctors[i].id == appointment.doctorID) {
+        doctorFound = 1;
+        break;
+      }
+  }
+
+  if (patientFound == 0) {
+    printf("\nPatient ID does not exist!\n");
+  }
+  else if (doctorFound == 0) {
+    printf("\nDoctor ID does not exist!\n");
+  }
+  else {
     printf("Enter Date: ");
     scanf("%s", appointment.date);
 
@@ -271,6 +295,8 @@ int main()
     printf("Doctor ID: %d\n", appointment.doctorID);
     printf("Date: %s\n", appointment.date);
     printf("Time: %s\n", appointment.time);
+  }
+
 }
     else if (appointmentChoice == 2) {
     printf("\n--- VIEW APPOINTMENTS ---\n");
