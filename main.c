@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 struct Patient {
     int id;
@@ -194,16 +195,6 @@ int main()
     }
 }
 
-    else if (doctorChoice == 2) {
-    printf("\n--- VIEW DOCTORS ---\n");
-
-    for (int i = 0; i < doctorCount; i++) {
-        printf("\nDoctor %d\n", i + 1);
-        printf("Doctor ID: %d\n", doctors[i].id);
-        printf("Doctor Name: %s\n", doctors[i].name);
-        printf("Specialization: %s\n", doctors[i].specialization);
-    }
-}
 
     else if (doctorChoice == 3) {
     int searchID;
@@ -287,16 +278,31 @@ int main()
     printf("Enter Time: ");
     scanf("%s", appointment.time);
 
-    appointments[appointmentCount] = appointment;
-    appointmentCount++;
+    int conflict = 0;
+    for (int i = 0; i < appointmentCount; i++) {
+      if (appointments[i].doctorID == appointment.doctorID &&
+        strcmp(appointments[i].date, appointment.date) == 0 &&
+        strcmp(appointments[i].time, appointment.time) == 0) {
+        conflict = 1;
+        break;
+      }
+   }
 
-    printf("\nAppointment booked successfully!\n");
-    printf("Patient ID: %d\n", appointment.patientID);
-    printf("Doctor ID: %d\n", appointment.doctorID);
-    printf("Date: %s\n", appointment.date);
-    printf("Time: %s\n", appointment.time);
-  }
 
+    if (conflict == 1) {
+        printf("\nDoctor is already booked at this date and time!\n");
+    }
+    else {
+        appointments[appointmentCount] = appointment;
+        appointmentCount++;
+
+        printf("\nAppointment booked successfully!\n");
+        printf("Patient ID: %d\n", appointment.patientID);
+        printf("Doctor ID: %d\n", appointment.doctorID);
+        printf("Date: %s\n", appointment.date);
+        printf("Time: %s\n", appointment.time);
+   }
+   }
 }
     else if (appointmentChoice == 2) {
     printf("\n--- VIEW APPOINTMENTS ---\n");
@@ -308,7 +314,8 @@ int main()
         printf("Date: %s\n", appointments[i].date);
         printf("Time: %s\n", appointments[i].time);
     }
-}
+    }
+
     else if (appointmentChoice == 3) {
         printf("\nReturning to Main Menu.\n");
     }
