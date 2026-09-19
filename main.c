@@ -29,6 +29,9 @@ int main()
     struct Doctor doctors[MAX_PATIENTS];
     int doctorCount = 0;
 
+    struct Appointment appointments[MAX_PATIENTS];
+    int appointmentCount = 0;
+
     while (1) {
 
     printf("====================================\n");
@@ -173,6 +176,9 @@ int main()
     printf("Enter Time: ");
     scanf("%s", appointment.time);
 
+    appointments[appointmentCount] = appointment;
+    appointmentCount++;
+
     printf("\nAppointment booked successfully!\n");
     printf("Patient ID: %d\n", appointment.patientID);
     printf("Doctor ID: %d\n", appointment.doctorID);
@@ -181,7 +187,14 @@ int main()
 }
     else if (appointmentChoice == 2) {
     printf("\n--- VIEW APPOINTMENTS ---\n");
-    printf("Appointment records will be displayed here.\n");
+
+    for (int i = 0; i < appointmentCount; i++) {
+        printf("\nAppointment %d\n", i + 1);
+        printf("Patient ID: %d\n", appointments[i].patientID);
+        printf("Doctor ID: %d\n", appointments[i].doctorID);
+        printf("Date: %s\n", appointments[i].date);
+        printf("Time: %s\n", appointments[i].time);
+    }
 }
     else if (appointmentChoice == 3) {
         printf("\nReturning to Main Menu.\n");
