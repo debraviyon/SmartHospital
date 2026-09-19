@@ -60,11 +60,23 @@ int main()
 
     if (patientChoice == 1) {
     struct Patient patient;
+    int idExists = 0;
 
     printf("\n--- ADD PATIENT ---\n");
 
     printf("Enter Patient ID: ");
     scanf("%d", &patient.id);
+
+    for (int i = 0; i < patientCount; i++) {
+       if (patients[i].id == patient.id) {
+          idExists = 1;
+          break;
+       }
+   }
+   if (idExists == 1) {
+      printf("\nPatient ID already exists!\n");
+   }
+   else {
 
     printf("Enter Patient Name: ");
     scanf(" %[^\n]", patient.name);
@@ -79,6 +91,7 @@ int main()
     printf("Patient ID: %d\n", patient.id);
     printf("Patient Name: %s\n", patient.name);
     printf("Patient Age: %d\n", patient.age);
+   }
 }
     else if (patientChoice == 2) {
     printf("\n--- VIEW PATIENTS ---\n");
