@@ -98,12 +98,17 @@ int main()
     else if (patientChoice == 2) {
     printf("\n--- VIEW PATIENTS ---\n");
 
-    for (int i = 0; i < patientCount; i++) {
+      if (patientCount == 0) {
+        printf("\nNo patients available.\n");
+      }
+      else {
+        for (int i = 0; i < patientCount; i++) {
         printf("\nPatient %d\n", i + 1);
         printf("Patient ID: %d\n", patients[i].id);
         printf("Patient Name: %s\n", patients[i].name);
         printf("Patient Age: %d\n", patients[i].age);
-    }
+     }
+     }
 }
 
     else if (patientChoice == 3) {
@@ -185,14 +190,19 @@ int main()
 }
 
     else if (doctorChoice == 2) {
-    printf("\n--- VIEW DOCTORS ---\n");
+      printf("\n--- VIEW DOCTORS ---\n");
 
-    for (int i = 0; i < doctorCount; i++) {
+      if (doctorCount == 0) {
+        printf("\nNo doctors available.\n");
+      }
+      else {
+        for (int i = 0; i < doctorCount; i++) {
         printf("\nDoctor %d\n", i + 1);
         printf("Doctor ID: %d\n", doctors[i].id);
         printf("Doctor Name: %s\n", doctors[i].name);
         printf("Specialization: %s\n", doctors[i].specialization);
-    }
+     }
+     }
 }
 
 
@@ -306,9 +316,13 @@ int main()
    }
 }
     else if (appointmentChoice == 2) {
-    printf("\n--- VIEW APPOINTMENTS ---\n");
+      printf("\n--- VIEW APPOINTMENTS ---\n");
 
-    for (int i = 0; i < appointmentCount; i++) {
+      if (appointmentCount == 0) {
+        printf("\nNo appointments available.\n");
+      }
+      else {
+        for (int i = 0; i < appointmentCount; i++) {
         printf("\nAppointment %d\n", i + 1);
         printf("Patient ID: %d\n", appointments[i].patientID);
         printf("Doctor ID: %d\n", appointments[i].doctorID);
@@ -316,7 +330,7 @@ int main()
         printf("Time: %s\n", appointments[i].time);
     }
     }
-
+}
     else if (appointmentChoice == 3) {
     int searchID;
     int found = 0;
