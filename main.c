@@ -231,7 +231,8 @@ int main()
     printf("\n--- APPOINTMENT MANAGEMENT ---\n");
     printf("1. Book Appointment\n");
     printf("2. View Appointments\n");
-    printf("3. Back to Main Menu\n");
+    printf("3. Search Appointment\n");
+    printf("4. Back to Main Menu\n");
 
     printf("\nEnter your choice: ");
     int appointmentChoice;
@@ -317,10 +318,37 @@ int main()
     }
 
     else if (appointmentChoice == 3) {
+    int searchID;
+    int found = 0;
+
+       printf("\n--- SEARCH APPOINTMENT ---\n");
+       printf("Enter Patient ID or Doctor ID: ");
+       scanf("%d", &searchID);
+
+       for (int i = 0; i < appointmentCount; i++) {
+        if (appointments[i].patientID == searchID ||
+            appointments[i].doctorID == searchID) {
+
+            printf("\nAppointment found!\n");
+            printf("Patient ID: %d\n", appointments[i].patientID);
+            printf("Doctor ID: %d\n", appointments[i].doctorID);
+            printf("Date: %s\n", appointments[i].date);
+            printf("Time: %s\n", appointments[i].time);
+
+            found = 1;
+        }
+    }
+
+       if (found == 0) {
+           printf("\nAppointment not found!\n");
+    }
+
+    }
+    else if (appointmentChoice == 4) {
         printf("\nReturning to Main Menu.\n");
     }
-    else {
-        printf("\nInvalid choice!\n");
+    else{
+       printf("\nInvalid choice!\n");
     }
 
     break;
