@@ -354,7 +354,7 @@ int main()
     break;
     case 4:
         printf("\nExiting Smart Hospital System...\n");
-        break;
+        return 0;
 
     default:
     printf("\nInvalid choice!\n");
